@@ -1,9 +1,9 @@
 
-const electron = require('electron');
-const path = require('path');
-const notifier = require('node-notifier');
+const electron = require('electron')
+const path = require('path')
+const notifier = require('node-notifier')
 
-const app = electron.app;
+const app = electron.app
 app.on('ready', () => {
   const window = new electron.BrowserWindow({
     width: 800,
@@ -14,16 +14,26 @@ app.on('ready', () => {
       partition: 'persist:teams',
       nodeIntegration: false
     }
-  });
-  window.webContents.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36');
-  window.loadURL('https://teams.microsoft.com/');
+  })
+  window.webContents.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36')
+  window.loadURL('https://teams.microsoft.com/')
 
-  window.on('page-title-updated', function(ev, title){
-    notifier.notify('page title updated!', {
-      body: JSON.stringify({
-        event : ev,
-        title: title
-      })
+  window.on('page-title-updated', function (ev, title) {
+    notifier.notify({
+      title: 'title',
+      message: 'message',
+      wait: true
+    }, function (err, repsonse) {
+      console.log(JSON.stringify(repsonse))
+    }
+  )
+    notifier.on('click', function (notifierObj, options) {
+      console.log('clicked!!!')
+      console.log(JSON.stringify(notifierObj))
+    })
+    notifier.on('timeout', function (notifierObj, options) {
+      console.log('timeout!!!')
+      console.log(JSON.stringify(notifierObj))
     })
   })
-});
+})
