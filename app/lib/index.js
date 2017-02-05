@@ -27,6 +27,9 @@ app.on('ready', () => {
     try {
       msgCount = +(title.match(regex)[0])
     }catch(ex){
+      console.log("parsing message count failed")
+      console.log(`error is: ${JSON.stringify(ex, null, 2)}`)
+      console.log(`title: ${title}, title.match(regex): ${title.match(regex)}`)
       return
     }
 
