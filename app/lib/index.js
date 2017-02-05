@@ -19,21 +19,29 @@ app.on('ready', () => {
   window.loadURL('https://teams.microsoft.com/')
 
   window.on('page-title-updated', function (ev, title) {
+    const regex = /(?!\()\d+(?=\))/g
+    if (!regex.test(title)){
+      return
+    }
+    let msgCount
+    try {
+      msgCount = +(title.match(regex)[0])
+    }catch(ex){
+      return
+    }
+
     notifier.notify({
       title: 'title',
-      message: 'message',
+      message: msgCount === 1 ? `1 new notification` : `${msgCount} new notifications`,
       wait: true
-    }, function (err, repsonse) {
-      console.log(JSON.stringify(repsonse))
-    }
-  )
-    notifier.on('click', function (notifierObj, options) {
-      console.log('clicked!!!')
-      console.log(JSON.stringify(notifierObj))
     })
-    notifier.on('timeout', function (notifierObj, options) {
-      console.log('timeout!!!')
-      console.log(JSON.stringify(notifierObj))
-    })
+    // notifier.on('click', function (notifierObj, options) {
+    //   console.log('clicked!!!')
+    //   console.log(JSON.stringify(notifierObj))
+    // })
+    // notifier.on('timeout', function (notifierObj, options) {
+    //   console.log('timeout!!!')
+    //   console.log(JSON.stringify(notifierObj))
+    // })
   })
 })
