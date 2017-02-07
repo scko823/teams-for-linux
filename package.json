@@ -16,7 +16,8 @@
   "scripts": {
     "start": "electron ./app",
     "pack": "build --dir",
-    "dist": "build"
+    "dist": "build",
+    "postinstall":"install-app-deps"
   },
   "devDependencies": {
     "electron": "^1.4.15",
@@ -29,9 +30,7 @@
       "executableName": "teams",
       "target": [
         "tar.gz",
-        "deb",
-        "rpm"
-      ]
+        "deb"      ]
     }
   },
   "dependencies": {
