@@ -1,11 +1,11 @@
 # teams-for-linux
 
 Unoficial Microsoft Teams client for Linux using [Electron](http://electron.atom.io/).
-It uses the Web App and wrapps it as a standalone application using Electron.
+It uses the Web App and wraps it as a standalone application using Electron.
 
 ## Install
 
-You can download the tar.gz, rpm or deb from the [releases page](https://github.com/ivelkov/teams-for-linux/releases).
+You can download the tar.gz or deb from the [releases page](https://github.com/scko823/teams-for-linux/releases).
 
 ## Run from source
 
