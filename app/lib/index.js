@@ -2,7 +2,7 @@
 const electron = require('electron')
 const path = require('path')
 const notifier = require('node-notifier')
-
+const open = require('open')
 const app = electron.app
 app.on('ready', () => {
   const window = new electron.BrowserWindow({
@@ -17,4 +17,9 @@ app.on('ready', () => {
   })
   window.webContents.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36')
   window.loadURL('https://teams.microsoft.com/')
+
+  window.webContents.on('new-window', (event, url) => {
+    event.preventDefault()
+    open(url)
+  })
 })
