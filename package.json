@@ -15,9 +15,10 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "scripts": {
     "start": "electron ./app",
-    "pack": "build --dir",
-    "dist": "build",
-    "postinstall":"install-app-deps"
+    "prepack" : "rm -rf teams-for-linux-linux-x64/ && echo \"packing app with electron-packager...\"",
+    "pack": "electron-packager app teams-for-linux --platform=linux --arch=x64",
+    "dist": "electron-installer-debian --src teams-for-linux-linux-x64/ --dest dist/installers/ --arch amd64 --config config.json",
+    "postinstall": "install-app-deps"
   },
   "devDependencies": {
     "electron": "^1.4.15",
@@ -30,10 +31,14 @@
       "executableName": "teams",
       "target": [
         "tar.gz",
-        "deb"      ]
+        "deb"
+      ]
     }
   },
   "dependencies": {
-    "node-notifier": "^5.0.2"
+    "electron-installer-debian": "^0.4.0",
+    "electron-packager": "^8.5.1",
+    "node-notifier": "^5.0.2",
+    "open": "0.0.5"
   }
 }
