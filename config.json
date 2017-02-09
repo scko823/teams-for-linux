@@ -1,0 +1,17 @@
+{
+  "src":"teams-for-linux-linux-x64/",
+  "dest": "dist/installers/",
+  "icon": "build/icons/96x96.png",
+  "options" : {
+    "name":"teams-for-linux",
+    "description": "an electron wrapper for Microsoft Teams",
+    "version" : "0.0.4",
+    "arch": "amd64",
+    "icon" : {
+      "48X48":"build/icons/48x48.png",
+      "64X64":"build/icons/64x64.png",
+      "96X96":"build/icons/96x96.png",
+      "128X128":"build/icons/128x128.png"
+    }
+  }
+}
